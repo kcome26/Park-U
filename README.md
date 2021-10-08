@@ -25,8 +25,8 @@ I am using android, so I will provide instructions for android, however IOS is v
 ## Run the App
 
 - Navigate to folder of react native app via command line
-- ``npm start
+- ``npm start``
 - A web browser should open at localhost:19002
-- Select ``Run on Android/Device Emulator
-- 
-App should be running now on the Emulator!
+- Select ``Run on Android/Device Emulator``
+
+## App should be running now on the Emulator!
