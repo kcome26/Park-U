@@ -4,7 +4,7 @@
 
 ### Visual Studio Code Setup
 
-__Extensions__
+__Useful/Recommended Extensions__
 - Material Icon Theme
 - Prettier
 - React Native Tools
