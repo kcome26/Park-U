@@ -1,6 +1,6 @@
 # Park-U 
 
-## Installion process for editting code and running App
+## Installion process for editing code and running App
 
 ### Visual Studio Code Setup
 
