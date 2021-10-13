@@ -11,7 +11,7 @@ __Useful/Recommended Extensions__
 - React-Native/React/Redux
 
 __Node Setup and npm Install__
-- Go [here](https://nodejs.org/en/download/) to download node for respective OS. Verify npm install by ``npm -v``
+- Go [here](https://nodejs.org/en/download/) to download node for respective OS. Verify npm install via command prompt ``npm -v``
 - Open command line, install ``create-react-native-app``
 - Next in command line, ``npm i -g expo-cli``
 
