@@ -29,11 +29,11 @@ const AuthScreen = () => {
         .then(async res => { 
             try {
                 const jsonRes = await res.json();
-                if (res.status === 200) {
+                if (res.status === 200) { //SUCCESS
                     setMessage(jsonRes.message);
                 }
             } catch (err) {
-                console.log(err);
+                console.log(err); 
             };
         })
         .catch(err => {
@@ -52,7 +52,7 @@ const AuthScreen = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(payload),
+            body: JSON.stringify(payload), //POST to DB
         })
         .then(async res => { 
             try {
@@ -80,7 +80,8 @@ const AuthScreen = () => {
     }
 
     return (
-        <ImageBackground source={require('../public/images/park-u_logo.jpg')} style={styles.image}>
+        //Login screen logo
+        <ImageBackground source={require('../public/images/park-u_logo.jpg')} style={styles.image}> 
             <View style={styles.card}>
                 <Text style={styles.heading}>{isLogin ? 'Login' : 'Signup'}</Text>
                 <View style={styles.form}>
@@ -101,7 +102,7 @@ const AuthScreen = () => {
         </ImageBackground>
     );
 };
-
+//CSS styling for login screen(buttons, font, color, size, etc.)
 const styles = StyleSheet.create({
     image: {
         flex: 1,

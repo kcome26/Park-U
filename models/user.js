@@ -1,21 +1,22 @@
 import { Sequelize } from 'sequelize';
 import sequelize from '../utils/database.js';
 
+//MySQL database logic
 const User = sequelize.define('users', {
-   id: {
+   id: { //PRIMARY KEY
       type: Sequelize.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
    },
-   email: {
+   email: { //EMAIL
       type: Sequelize.STRING,
       allowNull: false,
    },
-   name: {
+   name: { //NAME
       type: Sequelize.STRING,
    },
-   password: {
+   password: { //PASSWORD
       type: Sequelize.STRING,
       allowNull: false,
    },
