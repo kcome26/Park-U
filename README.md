@@ -14,8 +14,8 @@ __Node Setup and npm Install__
 - Go [here](https://nodejs.org/en/download/) to download node for respective OS. Verify npm install via command prompt ``npm -v``
 - Open command line, install ``npm install (for Mac, best to use sudo)``
 - Next in command line, ``npm i -g expo-cli (for Mac, best to use sudo)``
-- for react navigation run npm install @react-navigation/native@5.7.3
-- and npm install @react-navigation/stack@5.9.0 @react-native-community/masked-view@0.1.10 react-native-screens@2.10.1 react-native-safe-area-context@3.1.4 react-native-gesture-handler@1.7.0
+- For react navigation, ``npm install @react-navigation/native@5.7.3``
+- Additionally, ``npm install @react-navigation/stack@5.9.0 @react-native-community/masked-view@0.1.10 react-native-screens@2.10.1 react-native-safe-area-context@3.1.4 react-native-gesture-handler@1.7.0``
 
 
 __Emulator Install__
