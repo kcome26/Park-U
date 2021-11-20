@@ -6,7 +6,7 @@ const HomeScreen = ({ navigation }) => {
         <Button
         title="Hi"
         onPress={() =>
-            navigation.navigate('Login', { name: 'Login'})
+            navigation.navigate('ParkingLot', { name: 'ParkingLot'})
         }
         />
     )
