@@ -1,4 +1,4 @@
-# Park-U 
+# ParkU 
 
 ## Installion process for editing code and running App
 
