@@ -3,7 +3,7 @@ import { ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, P
 
 const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
 
-const AuthScreen = () => {
+const AuthScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -42,6 +42,7 @@ const AuthScreen = () => {
     }
 
     const onSubmitHandler = () => {
+        navigation.navigate('Home', { name: 'Home'})
         /* database payload
            user_id is auto-generated unique key */
         const payload = {
