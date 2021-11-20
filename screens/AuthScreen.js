@@ -29,7 +29,7 @@ const AuthScreen = () => {
         .then(async res => { 
             try {
                 const jsonRes = await res.json();
-                if (res.status === 200) { //SUCCESS
+                if (res.status === 200) { 
                     setMessage(jsonRes.message);
                 }
             } catch (err) {
@@ -42,6 +42,8 @@ const AuthScreen = () => {
     }
 
     const onSubmitHandler = () => {
+        /* database payload
+           user_id is auto-generated unique key */
         const payload = {
             email,
             name,
@@ -81,9 +83,9 @@ const AuthScreen = () => {
 
     return (
         //Login screen logo
-        <ImageBackground source={require('../public/images/park-u_logo.jpg')} style={styles.image}> 
+        <ImageBackground source={require('../public/images/Joker.jpg')} style={styles.image}> 
             <View style={styles.card}>
-                <Text style={styles.heading}>{isLogin ? 'Login' : 'Signup'}</Text>
+                <Text style={styles.heading}>{isLogin ? 'Login' : 'Signup'}</Text> 
                 <View style={styles.form}>
                     <View style={styles.inputs}>
                         <TextInput style={styles.input} placeholder="Email" autoCapitalize="none" onChangeText={setEmail}></TextInput>
@@ -102,7 +104,7 @@ const AuthScreen = () => {
         </ImageBackground>
     );
 };
-//CSS styling for login screen(buttons, font, color, size, etc.)
+/* CSS styling for login screen(buttons, font, color, size, etc.) */
 const styles = StyleSheet.create({
     image: {
         flex: 1,

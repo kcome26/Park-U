@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-
+/* Controller class to route */
 const signup = (req, res, next) => {
     // checks if email already exists
     User.findOne({ where : {
@@ -9,10 +9,11 @@ const signup = (req, res, next) => {
     }})
     .then(dbUser => {
         if (dbUser) {
-            return res.status(409).json({message: "email already exists"});
+            return res.status(409).json({message: "Email already exists!"});
         } else if (req.body.email && req.body.password) {
             // password hash
             bcrypt.hash(req.body.password, 12, (err, passwordHash) => {
+                /* password will be hashed in database, and de-hashed coming out */
                 if (err) {
                     return res.status(500).json({message: "couldnt hash the password"}); 
                 } else if (passwordHash) {
@@ -22,18 +23,18 @@ const signup = (req, res, next) => {
                         password: passwordHash,
                     }))
                     .then(() => {
-                        res.status(200).json({message: "user created"});
+                        res.status(200).json({message: "User created!"});
                     })
                     .catch(err => {
                         console.log(err);
-                        res.status(502).json({message: "error while creating the user"});
+                        res.status(502).json({message: "Error while creating the user"});
                     });
                 };
             });
         } else if (!req.body.password) {
-            return res.status(400).json({message: "password not provided"});
+            return res.status(400).json({message: "Password not provided"});
         } else if (!req.body.email) {
-            return res.status(400).json({message: "email not provided"});
+            return res.status(400).json({message: "Email not provided"});
         };
     })
     .catch(err => {
@@ -48,17 +49,17 @@ const login = (req, res, next) => {
     }})
     .then(dbUser => {
         if (!dbUser) {
-            return res.status(404).json({message: "user not found"});
+            return res.status(404).json({message: "User not found.. 😔.."});
         } else {
             // password hash
             bcrypt.compare(req.body.password, dbUser.password, (err, compareRes) => {
                 if (err) { // error while comparing
-                    res.status(502).json({message: "error while checking user password"});
+                    res.status(502).json({message: "Error while checking user password"});
                 } else if (compareRes) { // password match
                     const token = jwt.sign({ email: req.body.email }, 'secret', { expiresIn: '1h' });
-                    res.status(200).json({message: "user logged in", "token": token});
+                    res.status(200).json({message: "User logged in", "token": token});
                 } else { // password doesnt match
-                    res.status(401).json({message: "invalid credentials"});
+                    res.status(401).json({message: "Invalid credentials"});
                 };
             });
         };
@@ -71,19 +72,19 @@ const login = (req, res, next) => {
 const isAuth = (req, res, next) => {
     const authHeader = req.get("Authorization");
     if (!authHeader) {
-        return res.status(401).json({ message: 'not authenticated' });
+        return res.status(401).json({ message: 'Not authenticated' });
     };
     const token = authHeader.split(' ')[1];
     let decodedToken; 
     try {
         decodedToken = jwt.verify(token, 'secret');
     } catch (err) {
-        return res.status(500).json({ message: err.message || 'could not decode the token' });
+        return res.status(500).json({ message: err.message || 'Could not decode the token' });
     };
     if (!decodedToken) {
-        res.status(401).json({ message: 'unauthorized' });
+        res.status(401).json({ message: 'Unauthorized' });
     } else {
-        res.status(200).json({ message: 'here is your resource' });
+        res.status(200).json({ message: 'Here is your resource' });
     };
 };
 

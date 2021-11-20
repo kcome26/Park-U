@@ -2,7 +2,6 @@ import express from 'express';
 
 import { signup, login, isAuth } from '../controllers/auth.js';
 
-//router is able to process via REST(PUT, POST, GET, and possibly DELETE)
 const router = express.Router();
 
 //Logic implemented in 'auth.js'
