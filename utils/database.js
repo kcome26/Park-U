@@ -1,4 +1,5 @@
-import { Sequelize } from 'sequelize';
+const {Sequelize} = require('sequelize');
+
 /*pass your info in arguments(1st argument: database_name, 2nd: user name, 3rd: local DB password)*/
 
 /*
@@ -13,6 +14,7 @@ CREATE TABLE `login_service` (
 
   Using MySQL. You can use another DB, and other attributes, variable names but code must change too
 */
+
 const sequelize = new Sequelize('loginDB', 'root', 'YOURPASSWORDHERE', {
     dialect: 'mysql',
     host: 'localhost', 
