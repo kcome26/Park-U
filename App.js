@@ -8,26 +8,31 @@ import { AuthScreen } from './screens';
 import  HomeScreen  from './screens/landingScreen';
 import  LotScreen  from './screens/LotScreen';
 import { render } from 'react-dom';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 const Stack = createStackNavigator();
-
+  navigationOptions: {
+    headerShown: false
+  }
 export default function App() {
+
   return (
+
     //<View style={styles.container}>
     <NavigationContainer> 
       <Stack.Navigator>
         <Stack.Screen 
         name='Login'
         component = {AuthScreen}
-        options={{title: 'Welcome'}}
+        options={{headerShown:false}}
         />
          {/* <AuthScreen /> */}
          <Stack.Screen 
          name = 'Home' 
-         component={HomeScreen} />
+         component={HomeScreen} 
+         options={{headerShown:false}}/>
         <Stack.Screen 
          name = 'ParkingLot' 
-         component={LotScreen} />
+         component={LotScreen} 
+         options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
     //<StatusBar style="auto" />
