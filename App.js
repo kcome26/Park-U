@@ -8,7 +8,7 @@ import { AuthScreen } from './screens';
 import  HomeScreen  from './screens/landingScreen';
 import  LotScreen  from './screens/LotScreen';
 import { render } from 'react-dom';
-
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 const Stack = createStackNavigator();
 
 export default function App() {
