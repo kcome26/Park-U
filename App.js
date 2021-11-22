@@ -10,32 +10,36 @@ import  LotScreen  from './screens/LotScreen';
 import { render } from 'react-dom';
 
 const Stack = createStackNavigator();
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
-
-export class MapContainer extends Component {
-  render() {
-    return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        initialCenter={
-          {
-            lat: -1.2884,
-            lng: 36.8233
-          }
-        }
-      />
-    );
-  }
+export default function App() {
+  return (
+    //<View style={styles.container}>
+    <NavigationContainer> 
+      <Stack.Navigator>
+        <Stack.Screen 
+        name='Login'
+        component = {AuthScreen}
+        options={{title: 'Welcome'}}
+        />
+         {/* <AuthScreen /> */}
+         <Stack.Screen 
+         name = 'Home' 
+         component={HomeScreen} />
+        <Stack.Screen 
+         name = 'ParkingLot' 
+         component={LotScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    //<StatusBar style="auto" />
+   //</View>
+  );
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBuOADyqLUA_xpaXBsMJjYncyYkB2JBtvE'
-})(MapContainer);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffa',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
