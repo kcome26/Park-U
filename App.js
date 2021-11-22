@@ -13,6 +13,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    //<View style={styles.container}>
     <NavigationContainer> 
       <Stack.Navigator>
         <Stack.Screen 
@@ -29,13 +30,15 @@ export default function App() {
          component={LotScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    //<StatusBar style="auto" />
+   //</View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffa',
     alignItems: 'center',
     justifyContent: 'center',
   },

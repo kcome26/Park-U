@@ -19,7 +19,6 @@ const HomeScreen = ({ navigation }) => {
             <MapView
                 style ={mapStyles}
                 provider={PROVIDER_GOOGLE}
-                zoom = {13}
                 mapType='hybrid'
                 region={location}
             >
