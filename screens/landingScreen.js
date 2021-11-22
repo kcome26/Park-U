@@ -4,9 +4,9 @@ import { Button } from "react-native";
 const HomeScreen = ({ navigation }) => {
     return(
         <Button
-        title="Hi"
+        title="parking lot"
         onPress={() =>
-            navigation.navigate('Login', { name: 'Login'})
+            navigation.navigate('ParkingLot', { name: 'ParkingLot'})
         }
         />
     )
