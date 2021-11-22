@@ -4,7 +4,7 @@ import { Button } from "react-native";
 const LotScreen = ({ navigation}) => {
     return(
         <Button
-        title="Lot screen"
+        title="login"
         onPress={() =>
             navigation.navigate('Login', { name: 'Login'})
         }
