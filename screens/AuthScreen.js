@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native';
 
-const API_URL = Platform.OS === 'ios' ? 'http://localhost:19000' : 'http://10.0.2.2:19000';
+const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
 
 const AuthScreen = ({ navigation }) => {
 
@@ -31,6 +31,7 @@ const AuthScreen = ({ navigation }) => {
                 const jsonRes = await res.json();
                 if (res.status === 200) { 
                     setMessage(jsonRes.message);
+                    navigation.navigate('Home', { name: 'Home'})
                 }
             } catch (err) {
                 console.log(err); 
@@ -42,7 +43,7 @@ const AuthScreen = ({ navigation }) => {
     }
 
     const onSubmitHandler = () => {
-        navigation.navigate('Home', { name: 'Home'})
+        //navigation.navigate('Home', { name: 'Home'})
         /* database payload
            user_id is auto-generated unique key */
         const payload = {
@@ -60,14 +61,13 @@ const AuthScreen = ({ navigation }) => {
         })
         .then(async res => { 
             try {
-                console.log(JSON.stringify(res))
                 const jsonRes = await res.json();
                 if (res.status !== 200) {
-                    console.log("rsync")
+                    console.log("fail")
                     setIsError(true);
                     setMessage(jsonRes.message);
                 } else {
-                    console.log("fail")
+                    console.log("succed")
                     onLoggedIn(jsonRes.token);
                     setIsError(false);
                     setMessage(jsonRes.message);
@@ -88,7 +88,7 @@ const AuthScreen = ({ navigation }) => {
 
     return (
         //Login screen logo
-        <ImageBackground source={require('../public/images/Joker.jpg')} style={styles.image}> 
+        <ImageBackground source={require('../public/images/park-u_logo.jpg')} style={styles.image}> 
             <View style={styles.card}>
                 <Text style={styles.heading}>{isLogin ? 'Login' : 'Signup'}</Text> 
                 <View style={styles.form}>

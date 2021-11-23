@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import DropdownMenu from 'react-native-dropdown-menu';
 import ModalDropdown from 'react-native-modal-dropdown';
 const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
@@ -45,14 +44,6 @@ const HomeScreen = ({ navigation }) => {
                 borderRadius: 5,}}
             />
             </View>
-            <View style={styles.inputs}>
-                <TouchableOpacity style={styles.button} onPress={() =>
-                    navigation.navigate('ParkingLot', { name: 'ParkingLot'})
-                    }>
-                    <Text style={styles.buttonText}>Parking Lot</Text>
-                </TouchableOpacity>
-            </View>
-
         </View>
     )
 
