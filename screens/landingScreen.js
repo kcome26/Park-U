@@ -1,5 +1,8 @@
 import React from "react";
 import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import DropdownMenu from 'react-native-dropdown-menu';
+import ModalDropdown from 'react-native-modal-dropdown';
+const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 const HomeScreen = ({ navigation }) => {
     let location = {
@@ -15,6 +18,7 @@ const HomeScreen = ({ navigation }) => {
         bottom: 20,
         borderRadius: 20,
         };
+    const data = [["lot 1", "lot 2", "lot 3", "lot 4"]];
     return(
         <View style={styles.container}>
             <MapView
@@ -24,6 +28,17 @@ const HomeScreen = ({ navigation }) => {
                 region={location}
             >
             </MapView>
+            <View style= {styles.card}>
+            <ModalDropdown options={['option 1', 'option 2']}
+            dropdownStyle={{ 
+                paddingRight: 10, 
+                paddingLeft: 10, 
+                paddingRight: 5, 
+                alignItems: 'flex-end', 
+                borderWidth: 5,
+                borderRadius: 5,}}
+            />
+            </View>
             <View style={styles.inputs}>
                 <TouchableOpacity style={styles.button} onPress={() =>
                     navigation.navigate('ParkingLot', { name: 'ParkingLot'})
@@ -31,6 +46,7 @@ const HomeScreen = ({ navigation }) => {
                     <Text style={styles.buttonText}>Parking Lot</Text>
                 </TouchableOpacity>
             </View>
+
         </View>
     )
 
@@ -52,12 +68,12 @@ const styles = StyleSheet.create({
     },  
     card: {
         flex: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.4)',
+        backgroundColor: 'rgba(255, 255, 255, 0.0)',
         width: '80%',
-        marginTop: '40%',
+        height: 100,
+        marginTop: '10%',
         borderRadius: 20,
-        maxHeight: 380,
-        paddingBottom: '30%',
+        top: 10,
     },
     heading: {
         fontSize: 30,
