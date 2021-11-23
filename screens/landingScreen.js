@@ -1,9 +1,8 @@
 import React from "react";
 import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import DropdownMenu from 'react-native-dropdown-menu';
 import ModalDropdown from 'react-native-modal-dropdown';
-const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://167.96.124.247:5000';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 const HomeScreen = ({ navigation }) => {
     let location = {
         latitude: 30.4133,
@@ -23,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
             navigation.navigate('ParkingLot', { name: 'ParkingLot'})
             return `${label}`;
           };
-    const data = ["lot 1", "lot 2", "lot 3", "lot 4"];
+    const data = ["PFT", "UREC", "Union"];
     return(
         <View style={styles.container}>
             <MapView
@@ -32,7 +31,26 @@ const HomeScreen = ({ navigation }) => {
                 mapType='hybrid'
                 region={location}
             >
+            <MapView.Marker
+                coordinate={{latitude: 30.4054,
+                longitude: -91.18}}
+                title={"PFT"}
+                description={"Patrick F. Taylor Lot"}
+            />
+            <MapView.Marker
+                coordinate={{latitude: 30.4125,
+                longitude: -91.170}}
+                title={"UREC"}
+                description={"University Recreation Lot"}
+            />
+            <MapView.Marker
+                coordinate={{latitude: 30.4118,
+                longitude: -91.1775}}
+                title={"Union"}
+                description={"Student Union Parking lot"}
+            />
             </MapView>
+            
             <View style= {styles.card}>
             <ModalDropdown options={data}
             renderButtonText={(rowData) => renderButtonText(rowData)}
@@ -45,14 +63,6 @@ const HomeScreen = ({ navigation }) => {
                 borderRadius: 5,}}
             />
             </View>
-            <View style={styles.inputs}>
-                <TouchableOpacity style={styles.button} onPress={() =>
-                    navigation.navigate('ParkingLot', { name: 'ParkingLot'})
-                    }>
-                    <Text style={styles.buttonText}>Parking Lot</Text>
-                </TouchableOpacity>
-            </View>
-
         </View>
     )
 
@@ -73,13 +83,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },  
     card: {
-        flex: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.0)',
-        width: '80%',
-        height: 100,
+        backgroundColor: 'rgba(255, 255, 25, 0.0)',
+        width: '30%',
+        height: 20,
         marginTop: '10%',
         borderRadius: 20,
-        top: 10,
+        bottom: 100,
+        alignItems: 'center',
     },
     heading: {
         fontSize: 30,
