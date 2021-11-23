@@ -18,7 +18,12 @@ const HomeScreen = ({ navigation }) => {
         bottom: 20,
         borderRadius: 20,
         };
-    const data = [["lot 1", "lot 2", "lot 3", "lot 4"]];
+        const renderButtonText = (rowData) => {
+            const {label, value} = rowData;
+            navigation.navigate('ParkingLot', { name: 'ParkingLot'})
+            return `${label}`;
+          };
+    const data = ["lot 1", "lot 2", "lot 3", "lot 4"];
     return(
         <View style={styles.container}>
             <MapView
@@ -29,7 +34,8 @@ const HomeScreen = ({ navigation }) => {
             >
             </MapView>
             <View style= {styles.card}>
-            <ModalDropdown options={['option 1', 'option 2']}
+            <ModalDropdown options={data}
+            renderButtonText={(rowData) => renderButtonText(rowData)}
             dropdownStyle={{ 
                 paddingRight: 10, 
                 paddingLeft: 10, 
