@@ -1,12 +1,12 @@
 import React from "react";
 import { ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native';
-const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
+const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://167.96.124.247:5000';
 const LotScreen = ({ navigation}) => {
     return(
         <ImageBackground source={require('../public/images/ParkingLot.png')} style={styles.image}> 
             <View style={styles.inputs}>
                 <TouchableOpacity style={styles.button} onPress={() =>
-                    navigation.navigate('Login', { name: 'Login'})
+                    navigation.navigate('Home', { name: 'Home'})
                     }>
                     <Text style={styles.buttonText}>home</Text>
                 </TouchableOpacity>

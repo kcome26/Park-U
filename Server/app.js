@@ -35,6 +35,6 @@ sequelize.sync();
 //app.listen(PORT, () => {
 //  console.log(`Server is running on port ${PORT}.`);
 //});
-app.listen(5000);
+app.listen(5000, "167.96.124.247");
 
 console.log("server running")

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native';
 
-const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
+const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://167.96.124.247:5000';
 
 const AuthScreen = ({ navigation }) => {
 
@@ -43,7 +43,6 @@ const AuthScreen = ({ navigation }) => {
     }
 
     const onSubmitHandler = () => {
-        //navigation.navigate('Home', { name: 'Home'})
         /* database payload
            user_id is auto-generated unique key */
         const payload = {
@@ -67,10 +66,10 @@ const AuthScreen = ({ navigation }) => {
                     setIsError(true);
                     setMessage(jsonRes.message);
                 } else {
-                    console.log("succed")
                     onLoggedIn(jsonRes.token);
                     setIsError(false);
                     setMessage(jsonRes.message);
+                    navigation.navigate('Home', { name: 'Home'})
                 }
             } catch (err) {
                 console.log(err);

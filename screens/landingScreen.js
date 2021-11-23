@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import ModalDropdown from 'react-native-modal-dropdown';
-const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
+const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://167.96.124.247:5000';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 const HomeScreen = ({ navigation }) => {
     let location = {
@@ -64,13 +64,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },  
     card: {
-        flex: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.0)',
-        width: '80%',
-        height: 100,
+        backgroundColor: 'rgba(255, 255, 25, 0.0)',
+        width: '30%',
+        height: 20,
         marginTop: '10%',
         borderRadius: 20,
-        top: 10,
+        bottom: 100,
+        alignItems: 'center',
     },
     heading: {
         fontSize: 30,
