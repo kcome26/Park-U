@@ -1,36 +1,32 @@
-import React from "react";
-import { ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native';
-const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://167.96.124.247:5000';
-const LotScreen = ({ navigation}) => {
-    return(
-        <ImageBackground source={require('../public/images/ParkingLot.png')} style={styles.image}> 
-            <View style={styles.inputs}>
-                <TouchableOpacity style={styles.button} onPress={() =>
-                    navigation.navigate('Home', { name: 'Home'})
-                    }>
-                    <Text style={styles.buttonText}>home</Text>
-                </TouchableOpacity>
-            </View>
-        </ImageBackground>
-        
-    )
-}
-
+import { StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     image: {
         flex: 1,
         width: '100%',
         alignItems: 'center',
     },  
     card: {
-        flex: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.4)',
-        width: '80%',
-        marginTop: '40%',
+        backgroundColor: 'rgba(255, 255, 25, 0.0)',
+        width: '30%',
+        height: 20,
+        marginTop: '10%',
         borderRadius: 20,
-        maxHeight: 380,
-        paddingBottom: '30%',
+        bottom: 100,
+        alignItems: 'center',
     },
+    icon: {
+        flex: .7,
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        right: 75,
+        },
     heading: {
         fontSize: 30,
         fontWeight: 'bold',
@@ -60,13 +56,14 @@ const styles = StyleSheet.create({
         minHeight: 40,
     },
     button: {
-        width: '80%',
-        backgroundColor: 'black',
-        height: 40,
-        borderRadius: 50,
+        width: 150,
+        height: 75,
+        borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 5,
+        bottom: 300,
+        right: 100,
     },
     buttonText: {
         color: 'white',
@@ -92,5 +89,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginVertical: '5%',
     },
-});
-export default LotScreen;
+  });
+  export default styles;

@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 /* Controller class to route */
 const signup = (req, res, next) => {
-    console.log("signup")
     // checks if email already exists
     User.findOne({ where : {
         email: req.body.email, 
@@ -44,7 +43,6 @@ const signup = (req, res, next) => {
 };
 
 const login = (req, res, next) => {
-    console.log("login")
     // checks if email exists
     User.findOne({ where : {
         email: req.body.email, 
@@ -72,7 +70,6 @@ const login = (req, res, next) => {
 };
 
 const isAuth = (req, res, next) => {
-    console.log("isauth")
     const authHeader = req.get("Authorization");
     if (!authHeader) {
         return res.status(401).json({ message: 'Not authenticated' });

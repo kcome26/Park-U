@@ -1,14 +1,15 @@
 import React from "react";
-import { Button, StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import ModalDropdown from 'react-native-modal-dropdown';
+import { ImageBackground, View, Text, TouchableOpacity, StyleSheet, TextInput, Platform, Image } from 'react-native';
+import styles from './LotCSS';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
-import styles from "./landingCSS";
-const HomeScreen = ({ navigation }) => {
+import ModalDropdown from 'react-native-modal-dropdown';
+const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://167.96.124.247:5000';
+const urecLot = ({ navigation}) => {
     let location = {
-        latitude: 30.4133,
-        longitude: -91.18,
-        latitudeDelta: .02,
-        longitudeDelta: .02,
+        latitude: 30.4125,
+        longitude: -91.170,
+        latitudeDelta: .0012,
+        longitudeDelta: .0012,
       }
     const mapStyles = {
         width: '90%',
@@ -17,12 +18,12 @@ const HomeScreen = ({ navigation }) => {
         bottom: 20,
         borderRadius: 20,
         };
-    const renderButtonText = (rowData) => {
-        const label = rowData;
-        navigation.navigate(label, { name: label})
-        return `${label}`;
-        };
-    const data = ["PFT lot", "UREC lot", "Union lot"];
+        const renderButtonText = (rowData) => {
+            const label = rowData;
+            navigation.navigate(label, { name: label})
+            return `${label}`;
+          };
+    const data = ["Front nine lot", "PFT lot", "Union lot"];
     return(
         <View style={styles.container}>
             <MapView
@@ -32,22 +33,10 @@ const HomeScreen = ({ navigation }) => {
                 region={location}
             >
             <MapView.Marker
-                coordinate={{latitude: 30.4054,
-                longitude: -91.18}}
-                title={"PFT"}
-                description={"Patrick F. Taylor Lot"}
-            />
-            <MapView.Marker
                 coordinate={{latitude: 30.4125,
                 longitude: -91.170}}
                 title={"UREC"}
                 description={"University Recreation Lot"}
-            />
-            <MapView.Marker
-                coordinate={{latitude: 30.4118,
-                longitude: -91.1775}}
-                title={"Union"}
-                description={"Student Union Parking lot"}
             />
             </MapView>
             <View style= {styles.card}>
@@ -62,8 +51,18 @@ const HomeScreen = ({ navigation }) => {
                 borderRadius: 5,}}
             />
             </View>
+            <View style={styles.inputs}>
+                <TouchableOpacity style={styles.button} onPress={() =>
+                    navigation.navigate('Home', { name: 'Home'})
+                    }>
+                    <Image
+                    source={require('../public/images/ParkU_logo.png')}
+                    style={styles.icon}
+                    />
+                </TouchableOpacity>
+            </View>
         </View>
     )
 
 }
-export default HomeScreen;
+export default urecLot;

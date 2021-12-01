@@ -6,17 +6,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { AuthScreen } from './screens';
 import  HomeScreen  from './screens/landingScreen';
-import  LotScreen  from './screens/LotScreen';
-import { render } from 'react-dom';
+import  frontNineLot  from './screens/frontNineLot';
+import  pftLot  from './screens/pftLot';
+import  unionLot  from './screens/unionLot';
+import  urecLot  from './screens/urecLot';
 const Stack = createStackNavigator();
-  navigationOptions: {
-    headerShown: false
-  }
 export default function App() {
-
   return (
-
-    //<View style={styles.container}>
     <NavigationContainer> 
       <Stack.Navigator>
         <Stack.Screen 
@@ -24,27 +20,27 @@ export default function App() {
         component = {AuthScreen}
         options={{headerShown:false}}
         />
-         {/* <AuthScreen /> */}
          <Stack.Screen 
          name = 'Home' 
          component={HomeScreen} 
          options={{headerShown:false}}/>
         <Stack.Screen 
-         name = 'ParkingLot' 
-         component={LotScreen} 
+         name = 'Front nine lot' 
+         component={frontNineLot} 
+         options={{headerShown:false}}/>
+        <Stack.Screen 
+         name = 'PFT lot' 
+         component={pftLot} 
+         options={{headerShown:false}}/>
+        <Stack.Screen 
+         name = 'UREC lot' 
+         component={urecLot} 
+         options={{headerShown:false}}/>
+        <Stack.Screen 
+         name = 'Union lot' 
+         component={unionLot} 
          options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
-    //<StatusBar style="auto" />
-   //</View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffa',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

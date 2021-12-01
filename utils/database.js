@@ -1,6 +1,4 @@
 import { Sequelize } from 'sequelize';
-//const Sequelize = require('sequelize').Sequelize;
-//const { Sequelize } = require('sequelize');
 /*pass your info in arguments(1st argument: database_name, 2nd: user name, 3rd: local DB password)*/
 
 /*
@@ -27,7 +25,6 @@ const sequelize = new Sequelize('logindb', 'root', 'dogg', {
       acquire: 30000
     },
 });
-//module.exports = sequelize;
 export default sequelize;
   //"type": "module",
 /*
