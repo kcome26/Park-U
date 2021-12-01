@@ -3,6 +3,8 @@ import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import ModalDropdown from 'react-native-modal-dropdown';
 const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://167.96.124.247:5000';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+//import Geolocation from "react-native-geolocation-service";
+
 const HomeScreen = ({ navigation }) => {
     let location = {
         latitude: 30.4133,
@@ -10,22 +12,24 @@ const HomeScreen = ({ navigation }) => {
         latitudeDelta: .02,
         longitudeDelta: .02,
       }
-    const mapStyles = {
-        width: '90%',
-        height: '50%',
+const mapStyles = {
+        width: '100%',
+        height: '100%',
         position: 'absolute',
-        bottom: 20,
         borderRadius: 20,
         };
-        const renderButtonText = (rowData) => {
-            const {label, value} = rowData;
-            navigation.navigate('ParkingLot', { name: 'ParkingLot'})
-            return `${label}`;
-          };
-    const data = ["PFT", "UREC", "Union"];
+const renderButtonText = (rowData) => {
+    const {label, value} = rowData;
+        navigation.navigate('ParkingLot', { name: 'ParkingLot'})
+        return `${label}`;
+        };
+
+const data = ["PFT", "UREC", "Union"];
+    
     return(
         <View style={styles.container}>
-            <MapView
+            <View style={styles.mapCard}>
+                <MapView
                 style ={mapStyles}
                 provider={PROVIDER_GOOGLE}
                 mapType='hybrid'
@@ -50,17 +54,57 @@ const HomeScreen = ({ navigation }) => {
                 description={"Student Union Parking lot"}
             />
             </MapView>
+            </View>
+            
             
             <View style= {styles.card}>
             <ModalDropdown options={data}
             renderButtonText={(rowData) => renderButtonText(rowData)}
+            textStyle={{
+                fontSize: 20,
+                color: "black",
+                paddingLeft: 95,
+                //textAlign: "left",
+                //alignContent: 'center',
+                alignItems: "center",
+            }}
+            dropdownTextStyle={{
+                color: "rgba(48, 255, 255, 100.0)",
+                color: "black",
+                letterSpacing: 1,
+                fontSize: 20,
+            }}
             dropdownStyle={{ 
-                paddingRight: 10, 
-                paddingLeft: 10, 
-                paddingRight: 5, 
-                alignItems: 'flex-end', 
+                height: 145,
+                width: 300,
+                //paddingRight: 10, 
+                //paddingLeft: 10, 
+                //paddingRight: 5, 
+                //alignItems: 'flex-end', 
+                alignItems: 'center',
+                 
+                alignContent: 'center', 
                 borderWidth: 5,
-                borderRadius: 5,}}
+                borderTopEndRadius: 0,
+                borderTopLeftRadius: 0,
+                borderRadius: 12,
+                borderColor: "rgba(48, 255, 255, 50.0)",
+                //paddingRight: 100,
+             }}
+                
+            style={{
+                backgroundColor: 'rgba(48, 255, 255, 100.0)',
+                justifyContent: 'center',
+                //paddingLeft: 80,
+                //alignContent: 'left',
+                //alignItems: 'left',
+                //backgroundColor: "black",
+                width: 300,
+                height: 50,
+                borderRadius: 12,
+                //paddingRight: 100,
+            }}
+            
             />
             </View>
         </View>
@@ -82,14 +126,22 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
     },  
-    card: {
-        backgroundColor: 'rgba(255, 255, 25, 0.0)',
-        width: '30%',
-        height: 20,
-        marginTop: '10%',
+    mapCard: {
+        backgroundColor: '#f0f',
+        width: '90%',
+        height: '50%',
+        position: 'absolute',
+        bottom: 20,
         borderRadius: 20,
-        bottom: 100,
-        alignItems: 'center',
+        },
+    card: {
+        //backgroundColor: 'rgba(0, 255, 255, 100.0)',
+        width: 300,
+        height: 50,
+        marginTop: '10%',
+        //borderRadius: 20,
+        bottom: 200,
+        //alignItems: 'flex-end',
     },
     heading: {
         fontSize: 30,
