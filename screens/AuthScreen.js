@@ -31,7 +31,6 @@ const AuthScreen = ({ navigation }) => {
                 const jsonRes = await res.json();
                 if (res.status === 200) { 
                     setMessage(jsonRes.message);
-                    navigation.navigate('Home', { name: 'Home'})
                 }
             } catch (err) {
                 console.log(err); 
@@ -61,16 +60,17 @@ const AuthScreen = ({ navigation }) => {
         })
         .then(async res => { 
             try {
+                console.log(JSON.stringify(res))
                 const jsonRes = await res.json();
                 if (res.status !== 200) {
-                    console.log("fail")
+                    console.log("rsync")
                     setIsError(true);
                     setMessage(jsonRes.message);
                 } else {
+                    console.log("fail")
                     onLoggedIn(jsonRes.token);
                     setIsError(false);
                     setMessage(jsonRes.message);
-                    navigation.navigate('Home', { name: 'Home'})
                 }
             } catch (err) {
                 console.log(err);
@@ -88,7 +88,7 @@ const AuthScreen = ({ navigation }) => {
 
     return (
         //Login screen logo
-        <ImageBackground source={require('../public/images/park-u_logo.jpg')} style={styles.image}> 
+        <ImageBackground source={require('../public/images/Joker.jpg')} style={styles.image}> 
             <View style={styles.card}>
                 <Text style={styles.heading}>{isLogin ? 'Login' : 'Signup'}</Text> 
                 <View style={styles.form}>
